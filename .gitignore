@@ -1,0 +1,13 @@
+/.devpanel/dumps/
+/.editorconfig
+/.gitattributes
+/.vscode/
+/composer.json
+/composer.lock
+/config/
+/logs/*
+!/logs/README.md
+/private/
+/recipes/
+/vendor/
+/web/
