@@ -1,0 +1,8 @@
+{
+    "patches": {
+        "drupal/core": {
+            "#3531174: Add configuration for additional known files in project root": "https://git.drupalcode.org/project/drupal/-/merge_requests/12432.patch",
+            "#3538854: Add fallback for apc.shm_segments to support APCu >= 5.1.25": "patches/drupal/drupal/3538854.patch"
+        }
+    }
+}

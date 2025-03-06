@@ -1,0 +1,13 @@
+diff --git a/core/modules/system/system.install b/core/modules/system/system.install
+index 431651d08e2..7b0cbe906ad 100644
+--- a/core/modules/system/system.install
++++ b/core/modules/system/system.install
+@@ -413,7 +413,7 @@ function system_requirements($phase): array {
+       $apcu_actual_size = ByteSizeMarkup::create($memory_info['seg_size'] * $memory_info['num_seg']);
+       $apcu_recommended_size = '32 MB';
+       $requirements['php_apcu_enabled']['value'] = t('Enabled (@size)', ['@size' => $apcu_actual_size]);
+-      if (Bytes::toNumber(ini_get('apc.shm_size')) * ini_get('apc.shm_segments') < Bytes::toNumber($apcu_recommended_size)) {
++      if (Bytes::toNumber(ini_get('apc.shm_size')) * (ini_get('apc.shm_segments') ?: 1) < Bytes::toNumber($apcu_recommended_size)) {
+         $requirements['php_apcu_enabled']['severity'] = RequirementSeverity::Warning;
+         $requirements['php_apcu_enabled']['description'] = t('Depending on your configuration, Drupal can run with a @apcu_size APCu limit. However, a @apcu_default_size APCu limit (the default) or above is recommended, especially if your site uses additional custom or contributed modules.', [
+           '@apcu_size' => $apcu_actual_size,
