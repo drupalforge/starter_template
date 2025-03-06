@@ -1,0 +1,9 @@
+include:
+  - ../base/docker-compose.db.yml
+
+services:
+  app:
+    extends:
+      file: ../base/docker-compose.app.yml
+      service: app
+    image: devpanel/php:8.4-base

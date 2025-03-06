@@ -1,0 +1,7 @@
+services:
+  page_cache_request_policy:
+    class: Drupal\Core\PageCache\RequestPolicy\NoSessionOpen
+    arguments: ['@session_configuration']
+  dynamic_page_cache_request_policy:
+    class: Drupal\Core\PageCache\RequestPolicy\NoSessionOpen
+    arguments: ['@session_configuration']

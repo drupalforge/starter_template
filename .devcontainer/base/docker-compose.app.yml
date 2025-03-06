@@ -1,0 +1,47 @@
+services:
+  app:
+    environment:
+      DP_APP_ID: 'starter_template'
+      APP_ROOT: '/var/www/html'
+      WEB_ROOT: '/var/www/html/web'
+      # Devcontainer-only unzip defaults for virtiofs metadata compatibility.
+      UNZIPOPT: '-o -DD'
+      CODES_USER_DATA_DIR: '/var/www/html/.vscode'
+      CODES_WORKING_DIR: '/var/www/html'
+      APACHE_RUN_USER: 'www'
+      APACHE_RUN_GROUP: 'www'
+      COMPOSER_HOME: '/home/www/.config/composer'
+      CODES_ENABLE: 'no'
+      DRUPALFORGE_DEVCONTAINER: true
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_ROOT_PASSWORD: root
+      DB_NAME: drupaldb
+      DB_USER: user
+      DB_PASSWORD: password
+      DB_DRIVER: mysql
+    volumes:
+      - "../..:/var/www/html"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  init-source-code:
+    environment:
+      APP_ROOT: /var/www/html
+      DB_SYNC_VOL: 'yes'
+      CODES_ENABLE: 'no'
+      DRUPALFORGE_DEVCONTAINER: 'true'
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_ROOT_PASSWORD: root
+      DB_NAME: drupaldb
+      DB_USER: user
+      DB_PASSWORD: password
+      DB_DRIVER: mysql
+    entrypoint: /var/www/build/.devcontainer/init-source-code.sh
+    volumes:
+      - "../..:/var/www/build"
+    depends_on:
+      db:
+        condition: service_healthy

@@ -1,0 +1,11 @@
+/*
+!/.ddev/
+!/.devcontainer/
+!/.devpanel/
+/.devpanel/dumps/
+!/.envrc
+!/.gitignore
+!/LICENSE.md
+!/README.md
+!/drush/drush.yml
+!/logs/README.md
